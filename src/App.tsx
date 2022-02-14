@@ -3,6 +3,7 @@ import Game from "./pages/Game"
 import Cadastro from "./pages/Cadastro"
 import Login from "./pages/Login"
 import Ranking from "./pages/Ranking"
+import Fases from "./pages/Fases"
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
           <Route path='/' element={<Login></Login>} ></Route>
           <Route path='/login' element={<Login></Login>} ></Route>
           <Route path='/ranking' element={<Ranking></Ranking>} ></Route>
+          <Route path='/fases' element={<Fases></Fases>} ></Route>
           <Route></Route>
           <Route
             path="*"

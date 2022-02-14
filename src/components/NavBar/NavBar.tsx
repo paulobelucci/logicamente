@@ -1,8 +1,14 @@
-import React from "react";
+import AvatarSection from "./AvatarSection/AvatarSection";
+import FaseNavigationSection from "./FaseNavigationSection/FaseNavigationSection";
+import LogoSection from "./LogoSection/LogoSection";
 import { Navbar } from "./styles";
 
 export function NavBar(){
     return (
-        <Navbar></Navbar>
+        <Navbar>
+            <LogoSection/>
+            <FaseNavigationSection/>
+            <AvatarSection/>
+        </Navbar>
     )
 }

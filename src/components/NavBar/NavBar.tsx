@@ -3,7 +3,7 @@ import FaseNavigationSection from "./FaseNavigationSection/FaseNavigationSection
 import LogoSection from "./LogoSection/LogoSection";
 import { Navbar } from "./styles";
 
-export function NavBar(){
+export default function NavBar(){
     return (
         <Navbar>
             <LogoSection/>

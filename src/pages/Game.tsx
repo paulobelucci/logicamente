@@ -1,8 +1,17 @@
-import React from "react";
-import { NavBar } from "../components/NavBar/NavBar";
+import { 
+    NavBar, 
+    PresentationGame,
+    CodeAreaContainer
+} from "../components/index";
+import { ContainerGame } from './styles'
+
 
 export default function Game(){
     return (
-        <NavBar/>
+        <ContainerGame>
+            <NavBar/>
+            <CodeAreaContainer></CodeAreaContainer>
+            <PresentationGame></PresentationGame>
+        </ContainerGame>
     )
 }

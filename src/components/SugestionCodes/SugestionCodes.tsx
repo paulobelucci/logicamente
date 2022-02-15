@@ -1,3 +1,5 @@
+import { Container } from "./styles";
+
 export default function SugestionCodes(){
-    return <div>SugestionCodes</div>
+    return <Container>Sugestions</Container>
 }

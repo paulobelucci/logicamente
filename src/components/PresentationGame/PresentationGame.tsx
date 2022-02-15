@@ -1,3 +1,9 @@
+import {Container} from './styles'
+
 export default function PresentationGame(){
-    return <div>PresentationGame</div>
+    return (
+        <Container>
+            PresentationGame
+        </Container>
+    )
 }

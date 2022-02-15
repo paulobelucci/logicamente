@@ -1,3 +1,5 @@
+import { Container } from './styles'
+
 export default function InputCodeArea(){
-    return <div>InputCodeArea</div>
+    return <Container>Input</Container>
 }

@@ -1,3 +1,5 @@
+import { Container } from "./styles";
+
 export default function OptionsMenu(){
-    return <div>OptionsMenu</div>
+    return <Container>Menu</Container>
 }

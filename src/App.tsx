@@ -5,6 +5,7 @@ import Login from "./pages/Login"
 import Ranking from "./pages/Ranking"
 import Fases from "./pages/Fases"
 
+
 function App() {
 
   return (

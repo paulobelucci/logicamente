@@ -1,33 +1,12 @@
 import { useState } from 'react'
 import { DragDropContext, Draggable, Droppable, DropResult } from 'react-beautiful-dnd'
+import { useSelector } from 'react-redux'
 import { Container } from './styles'
 
 
 export default function InputCodeArea(){
 
-
-    const items = [
-        {
-            id: "1",
-            text: "Input 1",
-        },
-        {
-            id: "2",
-            text: "Input 2",
-        },
-        {
-            id:  "3",
-            text: "Input 3",
-        },
-        {
-            id: "4",
-            text: "Input 4",
-        },
-        {
-            id: "5",
-            text: "Input 5",
-        },
-    ]
+    const items = useSelector((state) => state.inputs.data)
     
     const getItemStyle = (isDragging: boolean, draggableStyle: any) => ({
         padding: 10,

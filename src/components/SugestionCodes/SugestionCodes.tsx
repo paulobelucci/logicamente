@@ -1,31 +1,11 @@
 import { useState } from "react";
 import { DragDropContext, Draggable, Droppable, DropResult } from "react-beautiful-dnd";
 import { Container } from "./styles";
+import { useSelector, useDispatch } from 'react-redux'
 
 export default function SugestionCodes(){   
 
-    const items = [
-        {
-            id: "1",
-            text: "Sugestion 1",
-        },
-        {
-            id: "2",
-            text: "Sugestion 2",
-        },
-        {
-            id: "3",
-            text: "Sugestion 3",
-        },
-        {
-            id: "4",
-            text: "Sugestion 4",
-        },
-        {
-            id: "5",
-            text: "Sugestion 5",
-        },
-    ]
+	const items = useSelector(state => state.suggestions.data)
 
     const [ sugestions, setSugestions ] = useState(items)
 
@@ -39,7 +19,6 @@ export default function SugestionCodes(){
 
 		setSugestions(items)
 
-        console.log(sugestions.reverse())
 	}
 
     const getItemStyle = (isDragging: boolean, draggableStyle: any) => ({
@@ -83,5 +62,6 @@ export default function SugestionCodes(){
 				</Droppable>
 			</DragDropContext>
             
-        </Container>)
+        </Container>
+    )
 }

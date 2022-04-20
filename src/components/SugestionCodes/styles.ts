@@ -10,4 +10,6 @@ export const Container = styled.div`
         border: 2px solid blue;
         cursor: pointer;
     }
+
+    overflow-y: scroll;
 `;

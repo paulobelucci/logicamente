@@ -1,12 +1,12 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { DragDropContext, Draggable, Droppable, DropResult } from 'react-beautiful-dnd'
-import { RootStateOrAny, useSelector } from 'react-redux'
+import { useAppSelector, useAppDispatch } from '../../hooks'
 import { Container } from './styles'
 
 
 export default function InputCodeArea(){
 
-    const items = useSelector((state: RootStateOrAny) => state.inputs.data)
+	const store = useAppSelector((state) => state)
 
     const getItemStyle = (isDragging: boolean, draggableStyle: any) => ({
         padding: 10,
@@ -20,32 +20,57 @@ export default function InputCodeArea(){
         ...draggableStyle
     })
 
-    const [ inputs, setInputs ] = useState(items)
+	const getStore = () => {
+		return store.inputs
+	}
+
+    const [ inputs, setInputs ] = useState(getStore().data)
+
+	useEffect(() => {
+		setInputs(getStore().data)
+	}, [getStore().data])
     
     const onDragEnd = (result: DropResult) => {
-		console.log(result)
+		
 		const { source, destination } = result
-		if (destination) {
-			console.log("source...", source)
-			console.log("destination...", destination)
 
-			const items = Array.from(inputs)
-			const [ newOrder ] = items.splice(source.index, 1)
-			items.splice(destination.index, 0, newOrder)
+		console.log(source, destination)
+		
+		if(!destination) return
 
-			setInputs(items)
+		if(source.droppableId === destination?.droppableId){
 
-			console.log(inputs.reverse())
+			console.log(source.index)
+			console.log(destination.index)
+
+			const movedItem = inputs[source.index]
+			console.log(movedItem)
+
+			console.log("items", inputs)
+
+			inputs.splice(source.index, 1)
+			inputs.splice(destination.index, 0, movedItem)
+			
+			// setInputs(inputs)
+
+			// setInputs("ADD_INPUT", sugestions)
+			// console.log(inputs)	
+			
+		} else {
+			console.log(result)
 		}
 	}
+
+
 
     return (
         <Container >
             <h3>Inputs</h3>
-            <DragDropContext onDragEnd={onDragEnd}>
+            <DragDropContext onDragEnd={onDragEnd} >
 				<Droppable droppableId="inputs">
 					{(provided) => (
 						<div className="inputs" {...provided.droppableProps} ref={provided.innerRef}>
+							{provided.placeholder}
 							{inputs.map(({ id, text }, index) => {
 								return (
 									<Draggable key={id} draggableId={id} index={index} >

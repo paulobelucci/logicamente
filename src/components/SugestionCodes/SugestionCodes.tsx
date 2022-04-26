@@ -1,15 +1,30 @@
-import { useEffect, useState } from "react";
-import { DragDropContext, Draggable, Droppable, DropResult } from "react-beautiful-dnd";
+import { useState } from "react";
+import { useAppSelector, useAppDispatch } from '../../hooks'
+import { DragDropContext, Draggable, DragUpdate, Droppable, DropResult, ResponderProvided } from "react-beautiful-dnd";
 import { Container } from "./styles";
-import { useSelector, useDispatch, RootStateOrAny } from 'react-redux'
+// import { useSelector, useDispatch, RootStateOrAny } from 'react-redux'
+
+
+
 
 export default function SugestionCodes(){   
 
+	const dispatch = useAppDispatch()
+	const selector = useAppSelector((state) => state)
 
-	const sugestionsFaseOne = useSelector((state: RootStateOrAny) => state.suggestions.data)
-	const valueExecution = useSelector((state: RootStateOrAny) => state.actions.execution)
+	function setInputs(type: string, items: any){
+		dispatch({ type , items})
+	}
+	
+	const getInputs = () => {
+		return selector.inputs.data
+	}
 
-	const dispatch = useDispatch()
+
+	const sugestionsFaseOne = useAppSelector((state) => state.suggestions.data)
+	
+	const valueExecution = useAppSelector((state) => state.actions.execution)
+
 
     const [ sugestions, setSugestions ] = useState(sugestionsFaseOne)
 
@@ -17,7 +32,7 @@ export default function SugestionCodes(){
 		
 		const { source, destination } = result
 		
-		if(!destination) return
+		// if(!destination) return
 
 		if(source.droppableId === destination?.droppableId){
 
@@ -36,9 +51,15 @@ export default function SugestionCodes(){
 
 			console.log(valueExecution)
 
-			if(valueExecution){
-				dispatch({ type: 'ADD_INPUT' , items: sugestions})
-			}
+			// setInputs("ADD_INPUT", sugestions)
+			// const inputs = getInputs()
+			// console.log(inputs)	
+			
+		} else {
+			
+			setInputs("ADD_INPUT", sugestions[source.index])
+			sugestionsFaseOne.splice(source.index, 1)
+			console.log(getInputs())
 		}
 	}
 
@@ -61,6 +82,7 @@ export default function SugestionCodes(){
 				<Droppable droppableId="suggestions">
 					{(provided) => (
 						<div className="suggestions" {...provided.droppableProps} ref={provided.innerRef}>
+							{provided.placeholder}
 							{sugestions.map(({ id, text }, index) => {
 								return (
 									<Draggable key={id} draggableId={id} index={index} >
@@ -74,6 +96,7 @@ export default function SugestionCodes(){
 												style={getItemStyle(snapshot.isDragging, provided.draggableProps.style)}
 												>
 													{text}
+
 												</div>
 											</div>
 											

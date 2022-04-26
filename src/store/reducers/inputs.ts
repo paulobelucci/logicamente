@@ -1,16 +1,20 @@
 interface Action {
   type: string,
-  items: [{}]
+  items: []
 }  
 
 const initialState = {
-  data: [ ]
+  data: [
+    
+  ]
 }
 
 export default function inputs(state = initialState, action: Action){
   switch (action.type){
     case "ADD_INPUT" :
-      return { ...state, data: [ ...state.data, action.items] }
+      const result = { ...state.data, data: [ ...state.data, action.items] }
+      console.log('result...', result)
+      return result
     default:
       return state;
   }

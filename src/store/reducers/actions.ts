@@ -1,5 +1,3 @@
-import { valueToPercent } from "@mui/base";
-
 interface Action {
     type: string,
     value: boolean

@@ -31,11 +31,6 @@ const initialState = {
   ]
 }
 
-export default function suggestions(state = initialState, action){
-  switch (action.type){
-    case "ADD_SUGGESTION" :
-      return { ...state, data: [ ...state.data, action.title] }
-    default:
-      return state;
-  }
+export default function suggestions(state = initialState){
+  return state;
 }

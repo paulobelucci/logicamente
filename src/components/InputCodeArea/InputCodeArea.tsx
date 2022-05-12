@@ -94,7 +94,6 @@ export default function InputCodeArea(){
 							})}
 						</div>
 					)}
-                    
 				</Droppable>
 			</DragDropContext>
         </Container>

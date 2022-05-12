@@ -1,89 +1,99 @@
-
 import Sketch from "react-p5";
 import p5Types from "p5"; //Import this for typechecking and intellisense
 import {Container} from './styles'
+import background from '../../assets/images/background_edited.png'
+import car from '../../assets/images/carro.png'
 
+let x = 20
+let y = 100
+let carWidth = 100
+let carHeight = 50
+
+let imageBackground: p5Types.Image;
+let carro: p5Types.Image;
 
 enum Directions {
     LEFT = "L",
-    RIGHT = "R"
+    RIGHT = "R",
+    FORWARD = "F"
+}
+
+
+
+const Comands = {
+    AVANCAR : { distance: carWidth, direction: Directions.FORWARD },
+    VIRAR_DIREITA : { distance: carHeight, direction: Directions.RIGHT },
+    VIRAR_ESQUERDA : { distance: carHeight, direction: Directions.LEFT },
 }
 interface ComponentProps {
 	//Your component props
 }
-//ponto A
-let x1 = 20
-let y1 = 20
-
-//ponto B
-let x2 = 40
-let y2 = 30
-
-//ponto C
-let x3 = 20
-let y3 = 40
 
 
+let commands = [
+    Comands.AVANCAR, 
+    // Comands.VIRAR_DIREITA, 
+    // Comands.AVANCAR,
+    // Comands.VIRAR_ESQUERDA,
+    // Comands.AVANCAR, 
+    // Comands.AVANCAR, 
+    // Comands.VIRAR_ESQUERDA,
+    // Comands.AVANCAR, 
+    // Comands.VIRAR_DIREITA, 
+    // Comands.AVANCAR,
+]
 
 
 export default function PresentationGame(props: ComponentProps){
 
-    
 
-    function buttonEsquerda(p5: p5Types){
-        p5.createButton("ESQUERDA").mousePressed(() => move(p5, Directions.LEFT))
+    function move(p5: p5Types, command: any){
+        let count = 0
+        switch(command){
+            case Comands.AVANCAR:
+                while(count <= carWidth){
+                    count++
+                    x++;
+                    p5.image(carro, x, y, carWidth, carHeight);
+                }
+                break;
+            default:
+                break;
+        }
     }
 
-    function buttonDireita(p5: p5Types){
-        p5.createButton("DIREITA").mousePressed(() => move(p5, Directions.RIGHT))
+    function setCar(p5: p5Types){
+
+        // move(Directions.RIGHT)
+        commands.forEach(command => {
+            return move(p5, command)
+        })
+        
+    
     }
 
-    function move(p5: p5Types, direction?: String){
-    
-        if(direction === Directions.LEFT){
-            x1 -= 10
-            // y1 -= 1
-            x2 -= 10
-            // y2 -= 1
-            x3 -= 10
-            // y3 -= 1
-        } else if(direction === Directions.RIGHT) {
-            x1 += 10
-            // y1 += 1
-            x2 += 10
-            // y2 += 1
-            x3 += 10
-            // y3 += 1
-        } 
-
-        
-        
+    const preload = (p5: p5Types) => {
+        imageBackground = p5.loadImage(background)
+        carro = p5.loadImage(car)
     }
 
 
     //See annotations in JS for more information
 	const setup = (p5: p5Types, canvasParentRef: Element) => {
-        const background = p5.loadImage('assets/background.jpeg');
-		p5.createCanvas(800, 300).parent(canvasParentRef);
-        buttonEsquerda(p5)
-        buttonDireita(p5)
+        // const background = p5.loadImage('assets/background.jpeg');
+		p5.createCanvas(800, 350).parent(canvasParentRef);
 	};
 
 	const draw = (p5: p5Types) => {
         p5.frameRate(30)
-        p5.background(100);
-        const rect1 = p5.rect(0, 50, 100, 300);
-        rect1.fill(100, 255, 51)
+        p5.image(imageBackground, 0,0);
         
-        const rect2 = p5.rect(150, 0, 200, 250);
-        rect2.fill(100, 255, 51)
+        setCar(p5)
 
-        const triangule = p5.triangle(x1, y1, x2, y2, x3, y3);
-        triangule.fill(100,33,22)
 	};
 
 
-	return <Sketch setup={setup} draw={draw} />;
+	return <Sketch setup={setup} draw={draw} preload={preload} />;
 }
 
 

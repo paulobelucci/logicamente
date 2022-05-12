@@ -4,9 +4,7 @@ import { Container } from "./styles";
 export default function FaseNavigationSection(){
     return (
         <Container>
-            <button>Previous</button>
-            <h3>Actual Fase</h3>
-            <button>Next</button>
+            <h3>Fase 1</h3>
         </Container>
     )
 }

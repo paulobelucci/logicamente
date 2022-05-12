@@ -8,7 +8,7 @@ export const Container = styled.div`
 
     .optionCode {
         margin-bottom: 4px;
-        border: 2px solid red;
+        
         cursor: pointer;
     }
 

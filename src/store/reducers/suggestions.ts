@@ -2,27 +2,27 @@ const initialState = {
   data: [
     {
       id: "1",
-      text: "Suggestion 1"
+      text: "AVANÇAR"
     },
     {
       id: "2",
-      text: "Suggestion 2"
+      text: "VIRAR DIREITA"
     },
     {
       id: "3",
-      text: "Suggestion 3"
+      text: "VIRAR DIREITA"
     },
     {
       id: "4",
-      text: "Suggestion 4"
+      text: "VIRAR ESQUERDA"
     },
     {
       id: "5",
-      text: "Suggestion 5"
+      text: "AVANÇAR"
     },
     {
       id: "6",
-      text: "Suggestion 6"
+      text: "AVANÇAR"
     },
     {
       id: "7",

@@ -26,7 +26,7 @@ const initialState = {
     },
     {
       id: "7",
-      text: "Suggestion 7"
+      text: "VIRAR DIREITA"
     }
   ]
 }

@@ -6,10 +6,12 @@ export default createGlobalStyle`
     padding: 0;
     outline: 0;
     box-sizing: border-box;
+    font-family: 'Share Tech Mono', monospace;
   }
 
   body, input, button {
     font: 14px Roboto, sans-serif;
+    background-color: #f7f7f7;
   }
 
   button {

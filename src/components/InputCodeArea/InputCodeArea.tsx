@@ -3,22 +3,42 @@ import { DragDropContext, Draggable, Droppable, DropResult } from 'react-beautif
 import { useAppSelector, useAppDispatch } from '../../hooks'
 import { Container } from './styles'
 
+enum suggestionOptions {
+	AVANCAR = "AVANÇAR",
+	VIRAR_DIREITA = "VIRAR DIREITA",
+	VIRAR_ESQUERDA = "VIRAR ESQUERDA",
+}
 
 export default function InputCodeArea(){
 
 	const store = useAppSelector((state) => state)
 
-    const getItemStyle = (isDragging: boolean, draggableStyle: any) => ({
-        padding: 10,
-        margin: `0 50px 15px 50px`,
-        background: isDragging ? "#4a2975" : "white",
-        color: isDragging ? "white" : "black",
-        border: `1px solid black`,
-        fontSize: `20px`,
-        borderRadius: `5px`,
-    
-        ...draggableStyle
-    })
+	const getColor = (text: string) => {
+		if(text === suggestionOptions.AVANCAR){
+			return "#8FF8A4"
+		} else if (text === suggestionOptions.VIRAR_DIREITA){
+			return "#FDFB8D"
+		} else {
+			return "#8DFDF8"
+		}
+	}
+
+    const getItemStyle = function (isDragging: boolean, draggableStyle: any, text: string){
+
+		const backgroundColor = getColor(text)
+
+		return {
+			padding: 10,
+			margin: `0 50px 15px 50px`,
+			background: isDragging ? "#4a2975" : backgroundColor,
+			color: isDragging ? "#fff" : "black",
+			border: `1px solid black`,
+			fontSize: `20px`,
+			borderRadius: `5px`,
+		
+			...draggableStyle
+		}
+	}
 
 	const getStore = () => {
 		return store.inputs
@@ -65,37 +85,39 @@ export default function InputCodeArea(){
 
     return (
         <Container >
-            <h3>Inputs</h3>
-            <DragDropContext onDragEnd={onDragEnd} >
-				<Droppable droppableId="inputs">
-					{(provided) => (
-						<div className="inputs" {...provided.droppableProps} ref={provided.innerRef}>
-							{provided.placeholder}
-							{inputs.map(({ id, text }, index) => {
-								return (
-									<Draggable key={id} draggableId={id} index={index} >
-										{(provided, snapshot) => (
-											<div>
-												
-												<div
-												ref={provided.innerRef}
-												{...provided.draggableProps}
-												{...provided.dragHandleProps}
-												style={getItemStyle(snapshot.isDragging, provided.draggableProps.style)}
-												>
-													{text}
+            <h2>INPUTS</h2>
+			<div className="suggestionContainer">
+				<DragDropContext onDragEnd={onDragEnd} >
+					<Droppable droppableId="inputs">
+						{(provided) => (
+							<div className="inputs" {...provided.droppableProps} ref={provided.innerRef}>
+								{provided.placeholder}
+								{inputs.map(({ id, text }, index) => {
+									return (
+										<Draggable key={id} draggableId={id} index={index} >
+											{(provided, snapshot) => (
+												<div>
+													
+													<div
+													ref={provided.innerRef}
+													{...provided.draggableProps}
+													{...provided.dragHandleProps}
+													style={getItemStyle(snapshot.isDragging, provided.draggableProps.style, text)}
+													>
+														{text}
+													</div>
 												</div>
-											</div>
+												
+											)}
 											
-										)}
-										
-									</Draggable>
-								)
-							})}
-						</div>
-					)}
-				</Droppable>
-			</DragDropContext>
+										</Draggable>
+									)
+								})}
+							</div>
+						)}
+					</Droppable>
+				</DragDropContext>
+			</div>
         </Container>
     )
 }

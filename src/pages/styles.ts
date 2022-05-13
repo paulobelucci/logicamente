@@ -8,4 +8,5 @@ export const ContainerGame = styled.div`
     width: 90%;
     height: 90%;
     margin-left: 5%;
+
 `;

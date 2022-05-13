@@ -5,10 +5,9 @@ import { Container } from "./styles";
 export default function LogoSection(){
     return (
         <Container>
-            <h3>Logicamente</h3>
+            <h1>Logicamente</h1>
             <Link to={'/game'}>Home</Link>
             <Link to={'/fases'}>Fases</Link>
-            <Link to={'/ranking'}>Ranking</Link>
         </Container>
     )
 }

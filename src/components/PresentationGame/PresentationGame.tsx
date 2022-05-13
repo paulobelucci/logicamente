@@ -2,7 +2,7 @@ import Sketch from "react-p5";
 import p5Types from "p5"; //Import this for typechecking and intellisense
 import {Container} from './styles'
 import background from '../../assets/images/background_edited.png'
-import car from '../../assets/images/carro.png'
+import car from '../../assets/images/yellow_car.png'
 
 let x = 20
 let y = 100
@@ -53,7 +53,7 @@ export default function PresentationGame(props: ComponentProps){
             case Comands.AVANCAR:
                 while(count <= carWidth){
                     count++
-                    x++;
+                    // x++;
                     p5.image(carro, x, y, carWidth, carHeight);
                 }
                 break;
@@ -93,7 +93,11 @@ export default function PresentationGame(props: ComponentProps){
 	};
 
 
-	return <Sketch setup={setup} draw={draw} preload={preload} />;
+	return (
+        <Container>
+         <Sketch setup={setup} draw={draw} preload={preload} />
+        </Container>
+        )
 }
 
 

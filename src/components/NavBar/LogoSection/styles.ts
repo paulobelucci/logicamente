@@ -3,9 +3,11 @@ import styled from "styled-components";
 export const Container = styled.div`
     display: flex;
     align-items: center;
+    border: 3px ;
 
-    h3 {
+    h1 {
         margin-right: 32px;
+        margin-left: 10px;
     }
 
     a {

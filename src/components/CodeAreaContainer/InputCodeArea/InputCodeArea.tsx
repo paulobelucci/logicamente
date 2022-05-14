@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { DragDropContext, Draggable, Droppable, DropResult } from 'react-beautiful-dnd'
-import { useAppSelector, useAppDispatch } from '../../hooks'
+import { useAppSelector } from '../../../hooks'
 import { Container } from './styles'
 
 enum suggestionOptions {
@@ -8,6 +8,7 @@ enum suggestionOptions {
 	VIRAR_DIREITA = "VIRAR DIREITA",
 	VIRAR_ESQUERDA = "VIRAR ESQUERDA",
 }
+
 
 export default function InputCodeArea(){
 
@@ -43,11 +44,13 @@ export default function InputCodeArea(){
 	const getStore = () => {
 		return store.inputs
 	}
-
+	// @ts-ignore
     const [ inputs, setInputs ] = useState(getStore().data)
 
 	useEffect(() => {
+		// @ts-ignore
 		setInputs(getStore().data)
+		// @ts-ignore
 	}, [getStore().data])
     
     const onDragEnd = (result: DropResult) => {
@@ -71,17 +74,10 @@ export default function InputCodeArea(){
 			inputs.splice(source.index, 1)
 			inputs.splice(destination.index, 0, movedItem)
 			
-			// setInputs(inputs)
-
-			// setInputs("ADD_INPUT", sugestions)
-			// console.log(inputs)	
-			
 		} else {
 			console.log(result)
 		}
 	}
-
-
 
     return (
         <Container >
@@ -92,7 +88,10 @@ export default function InputCodeArea(){
 						{(provided) => (
 							<div className="inputs" {...provided.droppableProps} ref={provided.innerRef}>
 								{provided.placeholder}
-								{inputs.map(({ id, text }, index) => {
+
+								{
+								//@ts-ignore
+								inputs.map(({ id, text }, index) => {
 									return (
 										<Draggable key={id} draggableId={id} index={index} >
 											{(provided, snapshot) => (

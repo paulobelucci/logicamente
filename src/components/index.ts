@@ -1,9 +1,9 @@
-import InputCodeArea from "./InputCodeArea/InputCodeArea"
-import LineOfCode from "./LineOfCode/LineOfCode"
+import InputCodeArea from "./CodeAreaContainer/InputCodeArea/InputCodeArea"
+import LineOfCode from "./CodeAreaContainer/LineOfCode/LineOfCode"
 import NavBar from "./NavBar/NavBar"
-import OptionsMenu from "./OptionsMenu/OptionsMenu"
+import OptionsMenu from "./CodeAreaContainer/OptionsMenu/OptionsMenu"
 import PresentationGame from "./PresentationGame/PresentationGame"
-import SugestionCodes from "./SugestionCodes/SugestionCodes"
+import SugestionCodes from "./CodeAreaContainer/SugestionCodes/SugestionCodes"
 import CodeAreaContainer from "./CodeAreaContainer/CodeAreaContainer"
 
 

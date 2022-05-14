@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useAppSelector, useAppDispatch } from '../../hooks'
-import { DragDropContext, Draggable, DragUpdate, Droppable, DropResult, ResponderProvided } from "react-beautiful-dnd";
+import { useAppSelector, useAppDispatch } from '../../../hooks'
+import { DragDropContext, Draggable, Droppable, DropResult, ResponderProvided } from "react-beautiful-dnd";
 import { Container } from "./styles";
 
 enum suggestionOptions {
@@ -21,6 +21,7 @@ export default function SugestionCodes(){
 	}
 	
 	const getInputs = () => {
+		//@ts-ignore
 		return selector.inputs.data
 	}
 

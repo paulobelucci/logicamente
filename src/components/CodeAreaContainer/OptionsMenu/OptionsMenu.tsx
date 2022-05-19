@@ -1,24 +1,21 @@
 import { Container } from "./styles";
 import Button from '@mui/material/Button';
-import { useSelector, useDispatch, RootStateOrAny } from 'react-redux'
-import { useEffect, useState } from "react";
+import { useDispatch } from 'react-redux'
 
 export default function OptionsMenu(){
 
     const dispatch = useDispatch()
-
-    const [ value, setValue] = useState(useSelector((state: RootStateOrAny) => state.actions.execution)) 
 
     const handleExecutar = () => {
         dispatch({ type : "SET_EXECUTION", value: true })
     }
 
     const handleReiniciar = () => {
-        dispatch({ type : "SET_EXECUTION", value: true })
+        dispatch({ type : "SET_REINICIAR", value: true })
     }
 
     const handleApagar = () => {
-        dispatch({ type : "SET_EXECUTION", value: true })
+        dispatch({ type : "SET_APAGAR", value: true })
     }
     
 

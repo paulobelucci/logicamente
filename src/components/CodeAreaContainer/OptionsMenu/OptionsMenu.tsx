@@ -11,7 +11,7 @@ export default function OptionsMenu(){
     }
 
     const handleReiniciar = () => {
-        dispatch({ type : "SET_REINICIAR", value: true })
+        window.location.reload()
     }
 
     const handleApagar = () => {

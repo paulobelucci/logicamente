@@ -28,6 +28,7 @@ export default function SugestionCodes(){
 
 	const sugestionsFaseOne = useAppSelector((state) => state.suggestions.data)
 	
+	//@ts-ignore
 	const valueExecution = useAppSelector((state) => state.actions.execution)
 
 
@@ -55,16 +56,11 @@ export default function SugestionCodes(){
 			setSugestions(sugestionsFaseOne)
 
 			console.log(valueExecution)
-
-			// setInputs("ADD_INPUT", sugestions)
-			// const inputs = getInputs()
-			// console.log(inputs)	
 			
 		} else {
 			
 			setInputs("ADD_INPUT", sugestions[source.index])
 			sugestionsFaseOne.splice(source.index, 1)
-			console.log(getInputs())
 		}
 	}
 

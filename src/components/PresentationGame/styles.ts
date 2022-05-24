@@ -7,4 +7,5 @@ export const Container = styled.div`
     height: 40vh;
     border: 2px solid purple;
     border-radius: 5px;
+    background-color: #58D68D ;
 `;

@@ -25,8 +25,8 @@ Pronto! O projeto estará disponível através da porta
 
 ## 🛠️ Construído com
 
-* [ReactJS](https://pt-br.reactjs.org/) - O framework web usado
-* [P5*js](https://p5js.org/) - Gerente de Dependência
+* [ReactJS](https://pt-br.reactjs.org/) - ReactJS
+* [P5*js](https://p5js.org/) - P5*js
 
 ## ✒️ Autores
 
@@ -35,7 +35,5 @@ Este projeto foi desenvolvido por:
 * **Paulo Henrique Belucci** - [paulo.belucci](https://github.com/paulobelucci)
 
 ## 🎁 Agradeço a Profa. Ma. Joice Barbosa Mendes por orientar este trabalho. 
-
-* **Paulo Henrique Belucci** - [paulo.belucci](https://github.com/paulobelucci)
 
 ⌨️ Readme tamplate feito com ❤️ por [Armstrong Lohãns](https://gist.github.com/lohhans) 😊
